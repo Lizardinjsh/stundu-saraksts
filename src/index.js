@@ -4,4 +4,9 @@ import App from "./App.js";
 
 const noDOM = document.getElementById("root");
 const root = ReactDOM.createRoot(noDOM);
-root.render(<App />);
+root.render(
+    <>
+<React.StrictMode />
+<App />
+</>
+);

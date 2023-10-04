@@ -1,8 +1,7 @@
 function Stunda(props) {
     return(
-        <ul>
-            <li>{props.nosaukums}</li>
-        </ul>
-    )
-}
+
+        <li>{props.nosaukums}</li>
+    );
+};
 export default Stunda;

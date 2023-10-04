@@ -6,11 +6,19 @@ function App() {
       "Valoda un kultura",
       "Patstavigais darbs"
     ];
+
+    const otrdienasStundas = [
+      "Matematika",
+      "Latviesu valoda",
+      "Patstavigais darbs",
+      "Patstavigais darbs"
+    ];
     return(
       <>
 
       <div>Stundu saraksts sodien</div>
       <Diena diena="Pirmdiena" stundas={pirmdienasStundas}/>
+      <Diena diena="Otrdiena" stundas={otrdienasStundas} />
 
       </>
     )
