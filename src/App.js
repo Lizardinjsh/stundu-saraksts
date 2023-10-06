@@ -13,6 +13,7 @@ function App() {
       "Patstavigais darbs",
       "Patstavigais darbs"
     ];
+
     return(
       <>
 
