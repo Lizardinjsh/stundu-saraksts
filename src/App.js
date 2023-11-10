@@ -1,5 +1,44 @@
 import Diena from "./Diena";
+import { useEffect, useState } from "react";
+
 function App() {
+  
+  const [lessons, setLessons] = useState({});
+  const [loading, setLoading] = useState("true");
+
+  useEffect(() => {
+    async function getLessons(){
+      const response = await fetch(
+        "https://cheese-cake.onthewifi.com/api/lessons"
+    );
+      const data = await response.json();
+      console.log(data.IPb22[4].classes);
+      setLessons(data);
+      setLoading(false);
+      const cleansetData = {
+        diena: "pirmdiena",
+        stundas: data.IPb22[0].classes,
+      },
+      {
+        diena: "otrdiena",
+        stundas: data.IPb22[1].classes,
+      },
+      {
+        diena: "tresdiena",
+        stundas: data.IPb22[2].classes,
+      },
+      {
+        diena: "cetrutdiena",
+        stundas: data.IPb22[3].classes,
+      },
+      {
+        diena: "piektdiena",
+        stundas: data.IPb22[4].classes,
+      },
+    };
+
+
+  }, []);
     const pirmdienasStundas = [
       "Sports",
       "Dabaszinibas",
@@ -56,13 +95,14 @@ function App() {
 const dienasJSx = visasStundas.map((diena, indekss) => {
   return <Diena key={indekss} diena={diena.diena} stundas={diena.stundas} />;
     });
+    
 
     
     return(
       <>
 
       <div>Sis nedelas stundu saraksts</div>
-      {dienasJSx}
+      {loading ? <p>Loading...</p> : dienasJSx}
 
       </>
     )
